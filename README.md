@@ -25,20 +25,28 @@ cd dashapp_v2
 vagrant up
 ```
 
-4. To login to the machine run: 
+4. Login to the machine by running:
 
 ```
-vagrant ssh
+vagrant ssh 
 ```
+
+5. Execute the Dash application(app.py) in separate session by running:
+
+```
+setsid python3 /vagrant/app.py
+```
+
 
 ## Development
-
+ 
 
 ## TO DO: 
  
- * Prepare a nice README
  * Terraform code for provisioning into Prod
- * Any dev should be able to clone the repo and start working by running   ``` vagrant up ```
- * Add Travis for testing
 
 ## Done
+
+ * Prepare a nice README
+ * Add Travis for testing
+ * Any dev should be able to clone the repo and start working by running   ``` vagrant up ```
