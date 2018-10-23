@@ -21,4 +21,4 @@ before_script:
 - pip3 install -r requirements.txt
 script:
 - sudo bash -x test/tests.sh
-- pytest /test/test_app.py
+- pytest test/test_app.py
