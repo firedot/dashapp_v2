@@ -19,5 +19,5 @@ addons:
 before_script:
 - sudo bash -x scripts/provision.sh
 script:
-- sudo bash -x test/pkg_tests.sh
+- sudo bash -x test/tests.sh
 - pytest test_app.py
