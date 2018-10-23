@@ -1,0 +1,23 @@
+language: python
+python:
+- "3.5"
+- "3.5-dev"
+- "3.6"
+- "3.6-dev"
+dist: xenial
+sudo: required
+cache:
+- apt
+addons:
+  apt:
+     packages:
+     - python3-pip
+     - python3-setuptools
+     - python3-wheel
+     - curl
+     - net-tools
+before_script:
+- sudo bash -x scripts/provision.sh
+script:
+- sudo bash -x test/pkg_tests.sh
+- pytest test_app.py
