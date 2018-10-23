@@ -16,6 +16,8 @@ addons:
      - python3-wheel
      - curl
      - net-tools
+  install:
+    - pip3 install -r requirements.txt
 before_script:
 - sudo bash -x scripts/provision.sh
 script:
