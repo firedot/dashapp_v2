@@ -18,6 +18,7 @@ addons:
      - net-tools
 before_script:
 - sudo bash -x scripts/provision.sh
+- pip3 install -r requirements.txt
 script:
 - sudo bash -x test/tests.sh
 - pytest test_app.py
