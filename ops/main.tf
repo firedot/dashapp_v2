@@ -3,6 +3,11 @@ variable "aws_secret_key" {}
 variable "ami_id" {}
 variable "key_name" {}
 
+variable "vpc_security_group_ids" {
+  type    = "list"
+  default = ["sg-0104bd2e830bc7973"]
+}
+
 provider "aws" {
   access_key = "${var.aws_access_key}"
   secret_key = "${var.aws_secret_key}"
@@ -13,7 +18,7 @@ resource "aws_instance" "app01" {
   ami                    = "${var.ami_id}"
   instance_type          = "t2.micro"
   key_name               = "${var.key_name}"
-  vpc_security_group_ids = ["sg-0104bd2e830bc7973"]
+  vpc_security_group_ids = "${var.vpc_security_group_ids}"
 
   provisioner "file" {
     source      = "../app.py"
