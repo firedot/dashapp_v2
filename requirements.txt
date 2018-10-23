@@ -1,7 +1,7 @@
-install dash==0.22.0
-install dash-renderer==0.13.0
-install dash-html-components==0.11.0
-install dash-core-components==0.26.0
-install plotly --upgrade
-install pandas
-install pandas_datareader
+dash==0.22.0
+dash-renderer==0.13.0
+dash-html-components==0.11.0
+dash-core-components==0.26.0
+plotly --upgrade
+pandas
+pandas_datareader
