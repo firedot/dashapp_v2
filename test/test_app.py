@@ -1,6 +1,7 @@
 # test_app.py
 
-import sys, os
+import sys
+sys.path.append('/home/travis/virtualenv/python3.5.6/lib/python3.5/site-packages/')
 import pytest
 import app
 
