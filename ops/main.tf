@@ -21,9 +21,9 @@ resource "aws_instance" "app01" {
   key_name               = "${var.key_name}"
   vpc_security_group_ids = "${var.vpc_security_group_ids}"
 
-  connection {
+  connection = {
     type        = "ssh"
-    user        = "ubuntu"
+    user        = "${var.ssh_username}"
     private_key = "${file("~/.ssh/id_rsa")}"
   }
 
@@ -35,6 +35,7 @@ resource "aws_instance" "app01" {
   provisioner "file" {
     source      = "../scripts/provision.sh"
     destination = "/tmp/provision.sh"
+
   }
 
   provisioner "file" {
@@ -47,6 +48,7 @@ resource "aws_instance" "app01" {
       "chmod +x /tmp/provision.sh",
       "chmod +x ~/app.py",
       "bash -x /tmp/provision.sh",
+
       "sudo useradd dashapp -s /sbin/nologin",
       "sudo cp /tmp/dashapp.service /etc/systemd/system/dashapp.service",
       "sudo mkdir /opt/dashapp/",
