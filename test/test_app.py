@@ -1,7 +1,8 @@
 # test_app.py
 
 import sys
-sys.path.append('/home/travis/virtualenv/python3.5.6/lib/python3.5/site-packages/')
+print(sys.path)
+import dash
 import pytest
 import app
 
