@@ -29,12 +29,18 @@ resource "aws_instance" "app01" {
 
   provisioner "file" {
     source      = "../app.py"
-    destination = "~/app.py"
+    destination = "/tmp/app.py"
   }
 
   provisioner "file" {
     source      = "../scripts/provision.sh"
     destination = "/tmp/provision.sh"
+
+  }
+
+  provisioner "file" {
+    source      = "./files/dashapp.service"
+    destination = "/tmp/dashapp.service"
   }
 
   provisioner "remote-exec" {
@@ -42,6 +48,14 @@ resource "aws_instance" "app01" {
       "chmod +x /tmp/provision.sh",
       "chmod +x ~/app.py",
       "bash -x /tmp/provision.sh",
+
+      "sudo useradd dashapp -s /sbin/nologin",
+      "sudo cp /tmp/dashapp.service /etc/systemd/system/dashapp.service",
+      "sudo mkdir /opt/dashapp/",
+      "sudo cp /tmp/app.py /opt/dashapp/app.py",
+      "sudo systemctl daemon-reload",
+      "sudo systemctl enable dashapp",
+      "sudo systemctl start dashapp",
     ]
   }
 }
