@@ -21,26 +21,25 @@ resource "aws_instance" "app01" {
   key_name               = "${var.key_name}"
   vpc_security_group_ids = "${var.vpc_security_group_ids}"
 
+  connection {
+    type        = "ssh"
+    user        = "ubuntu"
+    private_key = "${file("~/.ssh/id_rsa")}"
+  }
+
   provisioner "file" {
     source      = "../app.py"
-    destination = "~/app.py"
-
-    connection {
-      type        = "ssh"
-      user        = "${var.ssh_username}"
-      private_key = "${file("~/.ssh/id_rsa")}"
-    }
+    destination = "/tmp/app.py"
   }
 
   provisioner "file" {
     source      = "../scripts/provision.sh"
     destination = "/tmp/provision.sh"
+  }
 
-    connection {
-      type        = "ssh"
-      user        = "${var.ssh_username}"
-      private_key = "${file("~/.ssh/id_rsa")}"
-    }
+  provisioner "file" {
+    source      = "./files/dashapp.service"
+    destination = "/tmp/dashapp.service"
   }
 
   provisioner "remote-exec" {
@@ -48,14 +47,14 @@ resource "aws_instance" "app01" {
       "chmod +x /tmp/provision.sh",
       "chmod +x ~/app.py",
       "bash -x /tmp/provision.sh",
-      "python3 ~/app.py &",
+      "sudo useradd dashapp -s /sbin/nologin",
+      "sudo cp /tmp/dashapp.service /etc/systemd/system/dashapp.service",
+      "sudo mkdir /opt/dashapp/",
+      "sudo cp /tmp/app.py /opt/dashapp/app.py",
+      "sudo systemctl daemon-reload",
+      "sudo systemctl enable dashapp",
+      "sudo systemctl start dashapp",
     ]
-
-    connection {
-      type        = "ssh"
-      user        = "${var.ssh_username}"
-      private_key = "${file("~/.ssh/id_rsa")}"
-    }
   }
 }
 

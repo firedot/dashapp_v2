@@ -1,0 +1,15 @@
+[Unit]
+
+Description=DashApp Service
+After=network.target
+
+[Service]
+Type=simple
+User=dashapp
+ExecStart=/usr/bin/python3 /opt/dashapp/app.py -s
+
+Restart=on-abort
+
+[Install]
+WantedBy=multi-user.target
+
