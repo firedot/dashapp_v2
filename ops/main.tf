@@ -21,26 +21,20 @@ resource "aws_instance" "app01" {
   key_name               = "${var.key_name}"
   vpc_security_group_ids = "${var.vpc_security_group_ids}"
 
+  connection = {
+    type        = "ssh"
+    user        = "${var.ssh_username}"
+    private_key = "${file("~/.ssh/id_rsa")}"
+  }
+
   provisioner "file" {
     source      = "../app.py"
     destination = "~/app.py"
-
-    connection {
-      type        = "ssh"
-      user        = "${var.ssh_username}"
-      private_key = "${file("~/.ssh/id_rsa")}"
-    }
   }
 
   provisioner "file" {
     source      = "../scripts/provision.sh"
     destination = "/tmp/provision.sh"
-
-    connection {
-      type        = "ssh"
-      user        = "${var.ssh_username}"
-      private_key = "${file("~/.ssh/id_rsa")}"
-    }
   }
 
   provisioner "remote-exec" {
@@ -48,14 +42,7 @@ resource "aws_instance" "app01" {
       "chmod +x /tmp/provision.sh",
       "chmod +x ~/app.py",
       "bash -x /tmp/provision.sh",
-      "python3 ~/app.py &",
     ]
-
-    connection {
-      type        = "ssh"
-      user        = "${var.ssh_username}"
-      private_key = "${file("~/.ssh/id_rsa")}"
-    }
   }
 }
 
