@@ -48,7 +48,6 @@ resource "aws_instance" "app01" {
       "chmod +x /tmp/provision.sh",
       "chmod +x ~/app.py",
       "bash -x /tmp/provision.sh",
-
       "sudo useradd dashapp -s /sbin/nologin",
       "sudo cp /tmp/dashapp.service /etc/systemd/system/dashapp.service",
       "sudo mkdir /opt/dashapp/",
