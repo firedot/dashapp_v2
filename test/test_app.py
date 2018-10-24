@@ -1,6 +1,7 @@
 # test_app.py
 
 import sys, os
+import dash
 import pytest
 import app
 
