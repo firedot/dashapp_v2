@@ -14,8 +14,8 @@ addons:
      - curl
      - net-tools
 before_script:
+- cp app.py test/app.py
 - sudo bash -x scripts/provision.sh
-- pip3 install -r requirements.txt
 script:
 - sudo bash -x test/tests.sh
 - pytest test/test_app.py
