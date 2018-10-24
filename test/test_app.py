@@ -2,6 +2,7 @@
 
 import sys, os
 sys.path.append('/usr/lib/python3.5/site-packages')
+sys.path.append('/usr/lib/python3/dist-packages')
 import pytest
 import app
 
