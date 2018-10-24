@@ -83,6 +83,8 @@ export TF_VAR_aws_secret_key="<your_aws_secret_key>"
 export TF_VAR_region_id="<your_aws_region>"
 
 export TF_VAR_vpc_security_group_ids='["<vpc_security_group_ID_0>","<vpc_security_group_ID_1>"]'
+
+export TF_VAR_ssh_username="<username_for_your_ami>"
 ```
 
 1. Go in the ```ops``` dir: 
