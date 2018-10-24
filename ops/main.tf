@@ -2,6 +2,7 @@ variable "aws_access_key" {}
 variable "aws_secret_key" {}
 variable "ami_id" {}
 variable "key_name" {}
+variable "ssh_username" {}
 
 variable "vpc_security_group_ids" {
   type    = "list"
@@ -26,7 +27,7 @@ resource "aws_instance" "app01" {
 
     connection {
       type        = "ssh"
-      user        = "ubuntu"
+      user        = "${var.ssh_username}"
       private_key = "${file("~/.ssh/id_rsa")}"
     }
   }
@@ -37,7 +38,7 @@ resource "aws_instance" "app01" {
 
     connection {
       type        = "ssh"
-      user        = "ubuntu"
+      user        = "${var.ssh_username}"
       private_key = "${file("~/.ssh/id_rsa")}"
     }
   }
@@ -52,7 +53,7 @@ resource "aws_instance" "app01" {
 
     connection {
       type        = "ssh"
-      user        = "ubuntu"
+      user        = "${var.ssh_username}"
       private_key = "${file("~/.ssh/id_rsa")}"
     }
   }
