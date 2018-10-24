@@ -27,9 +27,3 @@ pip3 install plotly --upgrade  # Plotly graphing library used in examples
 #app prerequirement
 pip3 install pandas
 pip3 install pandas_datareader
-pip3 install markupsafe
-
-#install pytest
-
-pip3 install pytest
-
