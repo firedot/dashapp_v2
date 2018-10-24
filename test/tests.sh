@@ -18,3 +18,7 @@ else
     echo "Python module is missing"
     exit 1
 fi
+
+pip3 freeze | grep pytest
+
+which pytest
