@@ -88,7 +88,6 @@ export TF_VAR_vpc_security_group_ids='["<vpc_security_group_ID_0>","<vpc_securit
 
 ## TO DO: 
  
- * Terraform code for provisioning into Prod
 
 ## Done
 
