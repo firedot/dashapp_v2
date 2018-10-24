@@ -1,5 +1,8 @@
 # dashapp
 
+This repository contains development environment for an application 
+that uses Python Dash (framework for building analytical web applications)
+
 # Prerequisites: 
 
  1. Download and install VirtualBox from [here](https://www.virtualbox.org/wiki/Downloads)
