@@ -1,6 +1,7 @@
 # test_app.py
 
 import sys, os
+sys.path.append('/usr/lib/python3.5/site-packages')
 import pytest
 import app
 
