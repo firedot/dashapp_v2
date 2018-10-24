@@ -18,4 +18,4 @@ before_script:
 - sudo bash -x scripts/provision.sh
 script:
 - sudo bash -x test/tests.sh
-- pytest test/test_app.py
+- /usr/bin/pytest test/test_app.py
