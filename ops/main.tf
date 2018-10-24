@@ -46,7 +46,7 @@ resource "aws_instance" "app01" {
     inline = [
       "chmod +x /tmp/provision.sh",
       "chmod +x ~/app.py",
-      "/tmp/provision.sh",
+      "bash -x /tmp/provision.sh",
       "python3 ~/app.py &",
     ]
 
