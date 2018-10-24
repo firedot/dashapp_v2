@@ -95,3 +95,4 @@ export TF_VAR_vpc_security_group_ids='["<vpc_security_group_ID_0>","<vpc_securit
  * Prepare a nice README
  * Add Travis for testing
  * Any dev should be able to clone the repo and start working by running   ``` vagrant up ```
+ * Terraform code for provisioning into Prod
