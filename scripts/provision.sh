@@ -12,7 +12,7 @@ which pip &>/dev/null || {
   sudo apt-get install -y python-pip
 }
 
-which  pip3 &>/dev/null || {
+which pip3 &>/dev/null || {
   sudo apt-get update
   sudo apt-get install -y python3-pip
 }
