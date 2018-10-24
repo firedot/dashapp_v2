@@ -85,6 +85,35 @@ export TF_VAR_region_id="<your_aws_region>"
 export TF_VAR_vpc_security_group_ids='["<vpc_security_group_ID_0>","<vpc_security_group_ID_1>"]'
 ```
 
+1. Go in the ```ops``` dir: 
+
+```
+cd ops
+```
+2. Run the following command: 
+
+```
+terraform init
+
+# This will download all the needed providers described in the configuration file
+
+```
+3. Run the following command: 
+
+```
+terraform plan
+
+# This will create an execution plan. You could save the plan by using -o <file_name> 
+
+```
+
+4. Run the following command: 
+
+```
+terraform apply
+
+# This will provision your infrastructure according to your configuration file 
+```
 
 ## Development
  
