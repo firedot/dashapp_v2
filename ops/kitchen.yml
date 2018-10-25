@@ -1,0 +1,27 @@
+---
+driver:
+  name: terraform
+
+provisioner:
+  name: terraform
+
+platforms:
+  - name: ubuntu
+
+verifier:
+  name: terraform
+  reporter: doc
+  systems:
+    - name:
+        default
+      backend: ssh
+      user: ubuntu
+      hosts_output: public_IP
+      key_files:
+       - .priv/kitchen_test
+      controls:
+        - check_pkg
+
+suites:
+  - name:
+      default

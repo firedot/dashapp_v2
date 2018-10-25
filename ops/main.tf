@@ -24,7 +24,7 @@ resource "aws_instance" "app01" {
   connection = {
     type        = "ssh"
     user        = "${var.ssh_username}"
-    private_key = "${file("~/.ssh/id_rsa")}"
+    private_key = "${file("./.priv/kitchen_test")}"
   }
 
   provisioner "file" {
@@ -35,7 +35,6 @@ resource "aws_instance" "app01" {
   provisioner "file" {
     source      = "../scripts/provision.sh"
     destination = "/tmp/provision.sh"
-
   }
 
   provisioner "file" {
@@ -46,7 +45,7 @@ resource "aws_instance" "app01" {
   provisioner "remote-exec" {
     inline = [
       "chmod +x /tmp/provision.sh",
-      "chmod +x ~/app.py",
+      "chmod +x /tmp/app.py",
       "bash -x /tmp/provision.sh",
       "sudo useradd dashapp -s /sbin/nologin",
       "sudo cp /tmp/dashapp.service /etc/systemd/system/dashapp.service",
