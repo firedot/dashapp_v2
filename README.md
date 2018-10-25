@@ -65,7 +65,13 @@ python3 /vagrant/app.py &
 
 ## How to use Terraform to provision: 
 
- * **Note:** The following instructions assume that you already have cloned the repository
+**NOTE:** 
+The following steps assume that you have already cloned the repository,
+and you are in the repository directory!
+
+**NOTE**
+
+
 
  * Prerequisites: 
   - You must have Terraform installed
@@ -116,6 +122,74 @@ terraform apply
 
 # This will provision your infrastructure according to your configuration file 
 ```
+
+## How to perform kitchen test on the terraform configuration
+
+**The following instructions are for MacOS users**
+
+**NOTE:** 
+The following steps assume that you have already cloned the repository,
+and you are in the repository directory!
+
+**NOTE**
+
+**Prerequisites:**
+
+ * Install and fine tune rbenv by running the following commands
+   
+```
+which rbenv || brew install rbenv
+
+grep ".rbenv" ~/.bash_profile || {
+  echo 'export PATH="$HOME/.rbenv/bin:$PATH"' | tee -a ~/.bash_profile
+}
+
+source ~/.bash_profile
+
+rbenv init
+```
+ * Install ruby version 2.3.1 with rbenv by running the following commands
+
+```
+rbenv versions | grep 2.3.1 || rbenv install 2.3.1
+
+rbenv local 2.3.1
+
+```
+* Install bundler
+ 
+ ```
+ gem install bundler
+ ```
+ * Run the following command: 
+ 
+ ```
+ # This will install all gems described in the Gemfile
+ 
+ bundle install
+ ```
+
+
+1. Go into the ops directory: 
+
+```
+cd ops/
+```
+
+2. Run the following commands: 
+
+```
+bundle exec kitchen list 
+
+bundle exec kitchen converge
+
+bundle exec kitchen verify
+```
+  2.1 Alternatively you may run: 
+     
+     ``` 
+     bundle exec kitchen test
+     ```
 
 ## Development
  
