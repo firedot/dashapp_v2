@@ -124,8 +124,10 @@ terraform apply
  
 
 ## Done
-
+ 
  * Prepare a nice README
  * Add Travis for testing
  * Any dev should be able to clone the repo and start working by running   ``` vagrant up ```
- * Terraform code for provisioning into Prod
+ * Terraform code for provisioning into Prod 
+ * Write a systemd start script
+ * Kitchen-terraform test
