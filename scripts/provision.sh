@@ -8,12 +8,16 @@ LC_CTYPE="en_US.UTF-8"
 exec 2>&1
 
 which pip &>/dev/null || {
+  sudo rm /var/lib/apt/lists/lock
   sudo apt-get update
+  sudo rm /var/lib/apt/lists/lock
   sudo apt-get install -y python-pip
 }
 
 which pip3 &>/dev/null || {
+  sudo rm /var/lib/apt/lists/lock
   sudo apt-get update
+  sudo rm /var/lib/apt/lists/lock
   sudo apt-get install -y python3-pip
 }
 
