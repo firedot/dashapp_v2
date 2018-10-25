@@ -185,11 +185,13 @@ bundle exec kitchen converge
 
 bundle exec kitchen verify
 ```
-  2.1 Alternatively you may run: 
-     
-     ``` 
-     bundle exec kitchen test
-     ```
+   
+   2.1 Alternatively you may run: 
+      
+      ```
+      bundle exec kitchen test
+      ```
+
 
 ## Development
  
